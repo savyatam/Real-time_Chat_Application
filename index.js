@@ -8,9 +8,9 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
- /* socket.on('chat message', function(msg){
+  socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-  });*/
+  });
   console.log('made socket connection', socket.id);
 
     // Handle chat event
