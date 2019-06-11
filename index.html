@@ -1,26 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <head>
+        <meta charset="utf-8">
+        <title>HeyThere!</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+        <link href="/style.css" rel="stylesheet" />
+        <style>
+        #mario-chat{
+          display:none;
+        }
+      </style>
+    </head>
+    <body background="heth.jpg">
+    <div class="box" id="My">
+      <h2>Hey there!!</h2>
+      <!--<img src="heth.jpg" alt="Flowers in Chania" class="center">-->
+      <input class="hadle" id="handle" class="myne" type="text" placeholder="Handle" />
+      <button class="send_mess" type="button" onclick="hiddeElem()">Join</button>
+  </div>
+        <div id="mario-chat">
+          <div class="top_menu">
+        <!--<div class="buttons">
+            <div class="button close"></div>
+            <div class="button minimize"></div>
+            <div class="button maximize"></div>
+        </div>-->
+        <div class="title">Chat</div>
+    </div>
+            <!--<h2>Hey there!!</h2>-->
+            <div id="chat-window">
+                <div id="output"></div>
+                <div id="feedback"></div>
+            </div>
+            <input id="message"  type="text" placeholder="Message" />
+            <button class="send_message" id="send">Send</button>
+
+          </div>
+
+    </body>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="chhat.js"></script>
-  </body>
 </html>
+   
+ 
