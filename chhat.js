@@ -1,6 +1,6 @@
 $(function () {
         var socket = io();
-        $('form').submit(function(){
+       /* $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
           return false;
@@ -8,5 +8,40 @@ $(function () {
         socket.on('chat message', function(msg){
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
-        });
+        });*/
+        var message = document.getElementById('message'),
+      handle = document.getElementById('handle'),
+      btn = document.getElementById('send'),
+      output = document.getElementById('output'),
+      feedback = document.getElementById('feedback');
+
+        //document.getElementById("mario-chat").style.display = "block";
+        //document.getElementById("mario-chat").style.visibility = "visible";
+  function hiddeElem() {
+            document.getElementById("My").style.display = "none";
+            document.getElementById("mario-chat").style.display = "block";
+
+          }
+// Emit events
+btn.addEventListener('click', function(){
+    socket.emit('chat', {
+        message: message.value,
+        handle: handle.value
+    });
+    message.value = "";
+});
+
+message.addEventListener('keypress', function(){
+    socket.emit('typing', handle.value);
+})
+
+// Listen for events
+socket.on('chat', function(data){
+    feedback.innerHTML = '';
+    output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
+});
+
+socket.on('typing', function(data){
+    feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+});
       });
