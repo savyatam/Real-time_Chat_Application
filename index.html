@@ -2,28 +2,233 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+      #mario-chat{
+          display:none;
+        }
+      body{
+    font-family: 'Nunito';
+}
+
+h2{
+    font-size: 50px;
+    padding: 10px 20px;
+    color: #a3d063;
+
+  /*  border: 1px solid #a3d063;*/
+}
+#My
+{
+
+}
+#mario-chat{
+    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+    /*border: 1px solid #a3d063;*/
+    /*border: 1px solid #ddd;*/
+    /*box-shadow: 1px 3px 5px rgba(0,0,0,0.05);*/
+    border-radius: 2px;
+}
+
+.box{
+  background:white;
+  width:600px;
+  border-radius:6px;
+  margin: 0 auto 0 auto;
+  padding:20px 70px 200px 70px;
+  border: #a3d063 4px solid;
+}
+.send_mess{
+  width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #a3d063;
+  border: 2px solid #a3d063;
+  color: #fff;
+  margin-top:20px;
+  margin-bottom:20px;
+  /*cursor: pointer;*/
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;
+}
+
+
+#chat-window{
+    height: 400px;
+    overflow: auto;
+
+}
+
+#output p{
+  /* padding: 14px 10px;
+    /*margin: 20px 20px;
+    border-radius: 25px;
+    /*border-bottom: 1px solid #e9e9e9;*/
+    /*border-radius: 10px;
+  background-color: #fdbf68;*/
+    color: #555;
+    position: relative;
+      list-style: none;
+      padding: 20px 10px 0px 10px;
+      margin: 0;
+      /*height: 347px;*/
+      overflow: scroll;
+      font-size: 20px;
+}
+
+#feedback p{
+    color: #aaa;
+    padding: 14px 0px;
+    margin: 0 20px;
+}
+
+#output strong{
+    color: #a3d063;
+    font-size: 20px;
+}
+
+label{
+    box-sizing: border-box;
+    display: block;
+    padding: 10px 20px;
+}
+
+.hadle{
+  display: inline-block;
+height: 50px;
+border-radius: 25px;
+border: 1px solid #a3d063;
+width: calc(100% - 35px);
+position: relative;
+padding: 0px 10px;
+font-size: 20px;
+}
+
+input{
+  /*padding: 10px 20px;
+    box-sizing: border-box;
+    background: #eee;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    font-family: Nunito;
+    font-size: 16px;*/
+    display: inline-block;
+ height: 50px;
+ border-radius: 25px;
+ border: 1px solid #a3d063;
+ width: calc(100% - 200px);
+ position: relative;
+ padding: 0 20px;
+ font-size: 20px;
+}
+
+/*button{
+    background: #66FF33;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.send_message {
+  width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #a3d063;
+  border: 2px solid #a3d063;
+  color: #fff;
+  /*cursor: pointer;*/
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;
+}
+.myne{
+  display: inline-block;
+height: 50px;
+border-radius: 25px;
+border: 1px solid #a3d063;
+width: calc(100% - 200px);
+position: relative;
+padding: 0 20px;
+}
+.top_menu {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px 0 15px;
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+}
+.top_menu .buttons {
+  margin: 3px 0 0 20px;
+  position: absolute;
+}
+.top_menu .buttons .button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+.top_menu .buttons .button.close {
+  background-color: #f5886e;
+}
+.top_menu .buttons .button.minimize {
+  background-color: #fdbf68;
+}
+.top_menu .buttons .button.maximize {
+  background-color: #a3d063;
+}
+.top_menu .title {
+
+  text-align: center;
+  color: #bcbdc0;
+  font-size: 30px;
+}
+    </style>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+   <div class="box" id="My">
+      <h2>Hey there!!</h2>
+      <!--<img src="heth.jpg" alt="Flowers in Chania" class="center">-->
+      <input class="hadle" id="handle" class="myne" type="text" placeholder="Handle" />
+      <button class="send_mess" type="button" onclick="hiddeElem()">Join</button>
+  </div>
+        <div id="mario-chat">
+          <div class="top_menu">
+        <!--<div class="buttons">
+            <div class="button close"></div>
+            <div class="button minimize"></div>
+            <div class="button maximize"></div>
+        </div>-->
+        <div class="title">Chat</div>
+    </div>
+            <!--<h2>Hey there!!</h2>-->
+            <div id="chat-window">
+                <div id="output"></div>
+                <div id="feedback"></div>
+            </div>
+            <input id="message"  type="text" placeholder="Message" />
+            <button class="send_message" id="send">Send</button>
+
+          </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      });
+    <script src="chhat.js">
+     
     </script>
   </body>
 </html>
