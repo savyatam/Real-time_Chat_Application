@@ -1,15 +1,7 @@
-$(function () {
-        var socket = io();
-       /* $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
-        });*/
-        var message = document.getElementById('message'),
+var socket = io.connect('https://fintry.herokuapp.com/');
+
+// Query DOM
+var message = document.getElementById('message'),
       handle = document.getElementById('handle'),
       btn = document.getElementById('send'),
       output = document.getElementById('output'),
@@ -44,4 +36,3 @@ socket.on('chat', function(data){
 socket.on('typing', function(data){
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
-      });
