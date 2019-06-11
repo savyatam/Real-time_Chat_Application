@@ -230,13 +230,9 @@ padding: 0 20px;
     <script>
       function hiddeElem() {
             document.getElementById("My").style.display = "none";
-            document.getElementById("mario-chat").style.display = "block";}
-        var socket = io.connect('https://fintry.herokuapp.com/');
-        var message = document.getElementById('message'),
-      handle = document.getElementById('handle'),
-      btn = document.getElementById('send'),
-      output = document.getElementById('output'),
-      feedback = document.getElementById('feedback');
+            document.getElementById("mario-chat").style.display = "block";
+       var socket = io();
+      var  btn = document.getElementById('send');
       btn.addEventListener('click', function(){
     socket.emit('chat', {
         message: message.value,
@@ -248,7 +244,7 @@ padding: 0 20px;
     feedback.innerHTML = '';
     output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
-       
+      
           }
     </script>
   </body>
